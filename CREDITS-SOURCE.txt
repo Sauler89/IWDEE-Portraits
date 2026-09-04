@@ -1,4 +1,0 @@
-Full credits and rights notes: CREDITS.md
-Source collections: Ineth's Collection of Icewind Dale Style Portraits, Ineth2/iwd_portrait_variations v1.3, and Ineth2/PortraitsFromIWD2 v01.
-Detailed per-portrait attribution: docs/original-readmes/ and docs/manifest.csv
-Packaging/integration: Sauler89 / community project.
