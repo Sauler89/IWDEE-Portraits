@@ -1,0 +1,45 @@
+BACKUP ~IWDEE-Ineth-Portraits/backup~
+AUTHOR ~Sauler89 / community project~
+VERSION ~v0.1.0-beta3~
+
+README ~IWDEE-Ineth-Portraits/README.md~
+
+LANGUAGE ~English~ ~english~ ~IWDEE-Ineth-Portraits/tra/english.tra~
+
+BEGIN ~Ineth's IWD Style Portraits - Main Collection (357 portraits)~
+DESIGNATED 0
+REQUIRE_PREDICATE GAME_IS ~iwdee~ @1000
+COPY ~IWDEE-Ineth-Portraits/data/main~ ~override~
+INCLUDE ~IWDEE-Ineth-Portraits/data/register_main.tpa~
+
+BEGIN ~Ineth's IWD Style Portraits - Baldur's Gate Characters (36 portraits)~
+DESIGNATED 10
+REQUIRE_PREDICATE GAME_IS ~iwdee~ @1000
+COPY ~IWDEE-Ineth-Portraits/data/bg~ ~override~
+INCLUDE ~IWDEE-Ineth-Portraits/data/register_bg.tpa~
+
+BEGIN ~Ineth's IWD Style Portraits - Planescape: Torment Characters (24 portraits)~
+DESIGNATED 20
+REQUIRE_PREDICATE GAME_IS ~iwdee~ @1000
+COPY ~IWDEE-Ineth-Portraits/data/pst~ ~override~
+INCLUDE ~IWDEE-Ineth-Portraits/data/register_pst.tpa~
+
+BEGIN ~Ineth's IWD Style Portraits - Icewind Dale II Portraits (24 portraits)~
+DESIGNATED 30
+REQUIRE_PREDICATE GAME_IS ~iwdee~ @1000
+COPY ~IWDEE-Ineth-Portraits/data/iwd2~ ~override~
+
+ACTION_IF NOT (RESOURCE_CONTAINS ~UI.MENU~ ~rgGetGameEnginePortraits~) BEGIN
+  COPY ~IWDEE-Ineth-Portraits/data/m_iip_iwd2.lua~ ~override/m_iip_iwd2.lua~
+END
+
+BEGIN ~IWD:EE Portrait Variations - Zoomed Vanilla Sidebar Portraits (59 replacements)~
+DESIGNATED 100
+REQUIRE_PREDICATE GAME_IS ~iwdee~ @1000
+COPY ~IWDEE-Ineth-Portraits/data/vanilla_zoomed~ ~override~
+
+BEGIN ~IWD:EE Portrait Variations - Photoshopped Variations (10 portraits, zoomed sidebar)~
+DESIGNATED 200
+REQUIRE_PREDICATE GAME_IS ~iwdee~ @1000
+COPY ~IWDEE-Ineth-Portraits/data/photoshopped~ ~override~
+INCLUDE ~IWDEE-Ineth-Portraits/data/register_photoshopped.tpa~

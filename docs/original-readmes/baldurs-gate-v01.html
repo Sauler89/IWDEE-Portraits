@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Baldur's Gate characters</title>
+  <style>
+    body { background: #8F8B86; color: #262121; font-family: Verdana, Geneva, sans-serif; font-size: 15px; line-height: 150% }
+    pre, code { font-family: Monaco, "Andale Mono", AndaleMono, "DejaVu Sans Mono", monospace; color: #444141; font-size: inherit }
+    h1, h2, h3 { color:#4e240f }
+    h1 { font-size: 34px; margin: 0.5em 0 0.5em 0 }
+    h2 { font-size: 24px; margin: 1.2em 0 0.7em 0 }
+    h3 { font-size: 18px; font-style: italic; /*border-bottom: solid 1px #75594c;*/ margin: 1em 0 0.5em 0 }
+    h4 { font-size: 15px; color:#000; border-bottom: solid 1px #625c59; margin: 1em 0 0.5em 0 }
+    a { text-decoration: none; color: #5a3d00 }
+    a:hover { color: #723217 }
+    a:active { color: #562612 }
+    p, ul { margin: 0.2em 0 0.2em 0 }
+    p + p, p + ul, p + table { margin-top: 0.6em }
+    ul + p, table + p { margin-top: 0.9em }
+    li + li { margin-top: 0.3em }
+    th, td { vertical-align: top }
+    table.compact { margin: 0.3em 0.6em 0.5em 0.6em }
+    table.compact th { font-weight: normal }
+    table.compact th, table.compact td { padding: 0 5px; text-align: left }
+    table.grid { border-collapse: collapse }
+    table.grid th, table.grid td { border: solid 1px #625c59 }
+    table.grid th { background: #817c77 }
+    table.comparison { border-collapse: separate; border-spacing: 0.5em; /*width:100%; table-layout:fixed*/ }
+    table.comparison th { background: #393531; padding: 0.3em 0.8em; text-align: left }
+    table.comparison th, table.comparison th code { color: #ada8a1; font-size: 18px }
+    table.comparison td { background: #6d6863; padding: 0.8em }
+    table.comparison td.subheader { background: #817c77; text-align: center; font-style: italic; padding-bottom: 0.2em }
+    table.comparison, .portrait { background: #817c77; border: solid 1px #b6b4b3; border-right-color: #4d4947; border-bottom-color: #464241 }
+    .portrait { display: inline-block; vertical-align: top; margin: 0.5em; width: 240px }
+    .portrait img { display: block; width: 240px; height: 377px } /* :} */
+    .portrait .name { color: #201e1d; font-size: 16px; font-weight: bold; text-align: center; padding:0.2em }
+    .portrait .character { color: #201e1d; text-align: center; margin:-0.35em 0.2em 0.23em 0.2em; padding:0 }
+    .portrait .details { padding: 0.5em }
+    .portrait .source { font-weight:bold; margin:0.2em 0 0.15em 0 }
+    .portrait .changes { font-size:92%; color: #293944; font-style:italic; margin: 0.35em 0 0.15em 0; padding-top:0.25em; border-top: dotted 1px #595553  }
+    .portrait.orig .name, div.portrait.orig .details { background: #617f5e }
+    .portrait.orig .name { color: #002000 }
+    .portrait.orig_variant .name, div.portrait.orig_variant .details { background: #7f6364 }
+    .portrait.orig_variant .name { color: #210000 }
+    .list img { width: 76px; height: 118px } /* : */
+  </style>
+</head>
+
+<body>
+
+<h1><i>IWD:EE portrait pack:</i> Baldur's Gate characters</h1>
+
+<table class="compact">
+  <tr><th><b> Version: </b></td><td> 01</td></tr>
+  <tr><th><b> Release date: </b></td><td> Nov 2020</td></tr>
+  <tr><th><b> Links: </b></td><td> <a href="https://forums.beamdog.com/discussion/64954/iwd-style-portraits-for-characters-from-other-games/p1">forum thread</a> </td></tr>
+  <tr><th><b> Collection author: </b></td><td> Ineth </td></tr>
+  <tr><th><b> Image artists: </b></td><td> <i>see the <a href="#details">Portrait details</a> section below</i> </td></tr>
+</table>
+
+<h2 id="install">Installation</h2>
+
+<h4>Icewind Date: Enhanced Edition (patch 2.x):</h4>
+
+<ol>
+<li>Find the game's portrait folder:
+  <table class="compact grid">
+    <tr><th><i> Windows &amp; Mac: </i></th><td> <code>Documents/Icewind Dale - Enhanced Edition/Portraits</code> </td></tr>
+    <tr><th><i> Linux: </i></th><td> <code>.local/share/Icewind Dale - Enhanced Edition/portraits/</code> </td></tr>
+  </table>
+  <small>(The paths shown are relative to your user account's home directory. You have to start the game at least once, for them to be created.)</small>
+</li>
+<li>Copy all the <code>.bmp</code> files from the <code>L</code> subfolder of this download, to that location.</li>
+<li>Copy all the <code>.bmp</code> files from the <code>M</code> subfolder <b>or</b> from the <code>M_zoomed</code> subfolder to that location as well.<br>
+<small>(Refer to the <a href="#layouts">Portrait layouts</a> section below to help you choose.)</small></li>
+<li>The portraits now appear in the in-game portrait selection list, after the original portraits.</li>
+</ol>
+
+<h4>Icewind Date: Enhanced Edition (patch 1.x):</h4>
+
+Same, except that the portraits don't appear in the same list as the original portraits inside the game &ndash; instead, a "Custom portraits" button appears in the portrait selection interface, allowing you to pick them.
+
+<h2 id="layouts">Portrait layouts</h2>
+
+<p>This portrait pack contains three <code>.bmp</code> files per portrait &ndash; one for each of these layouts:</p>
+
+<table class="comparison"><tr>
+<th><code>L</code></h3></th>
+<th><code>M</code></h3></th>
+<th><code>M_zoomed</h3></th>
+</tr><tr>
+<td>
+  <div style="position:relative; width:297px; height:429px">
+    <img src="L/x!f_1j2L.bmp" width="240x377" height="" style="position:absolute; left:23px; top:22px">
+    <div style="position:absolute; top:0; left:0; width:297px; height:429px; background-image:url('http://i.imgur.com/WSsIbss.png'); pointer-events:none"></div>
+  </div>
+  <p><b>Character sheet portrait</b></p>
+  <p>Cropped like the built-in ones.</p>
+</td>
+<td>
+  <div style="position:relative; width:125px; height:161px">
+    <img src="M/x!f_1j2M.bmp" width="76x118" height="" style="position:absolute; left:25px; top:22px">
+    <div style="position:absolute; top:0; left:0; width:125px; height:161px; background-image:url('http://i.imgur.com/FgCsroj.png'); pointer-events:none"></div>
+  </div>
+  <p><b>Side-bar portrait</b></p>
+  <p>Cropped like the built-in ones.</p>
+</td>
+<td style="max-width: 36em">
+  <div style="position:relative; width:125px; height:161px">
+    <img src="M_zoomed/x!f_1j2M.bmp" width="76x118" height="" style="position:absolute; left:25px; top:22px">
+    <div style="position:absolute; top:0; left:0; width:125px; height:161px; background-image:url('http://i.imgur.com/FgCsroj.png'); pointer-events:none"></div>
+  </div>
+  <p><b>Side-bar portrait</b></p>
+  <p>Cropped differently from the built-in ones:</p>
+  <ul>
+    <li>Zoomed in more closely on the face.</li>
+    <li>Flipped where necessary to make sure no character faces right<br> <small>(because that's where the screen edge is)</small>.
+  </ul>
+  
+  <p>It's up to you whether you want to use this instead of the standard <code>M</code> layout.
+  <small>(See the <a href="#install">Installation</a> section above.)</small></p>
+  
+  <p>If you want the built-in portraits to use this layout as well, install the "<i>Zoomed-in side bar portraits</i>" component of my <a href="https://forums.beamdog.com/discussion/45897/mod-iwd-ee-portrait-variations/p1">IWD:EE Portrait Variations</a> mod.
+</td>
+</tr></table>
+
+<p>Preview of the two side-bar versions for all included portraits:</p>
+
+<table class="comparison"><tr>
+<th><code>M</code></h3></th>
+<th><code>M_zoomed</h3></th>
+</tr><tr>
+<td class="list"><img src="M/x!m_1c0M.bmp"> <img src="M/x!m_1c2M.bmp"> <img src="M/x!m_1e0M.bmp"> <img src="M/x!m_1e2M.bmp"> <img src="M/x!m_1e8M.bmp"> <img src="M/x!m_1eaM.bmp"> <img src="M/x!m_1i0M.bmp"> <img src="M/x!m_1i2M.bmp"> <img src="M/x!m_1i4M.bmp"> <img src="M/x!m_1m0M.bmp"> <img src="M/x!m_1m2M.bmp"> <img src="M/x!m_1m6M.bmp"> <img src="M/x!m_1x0M.bmp"> <img src="M/x!m_1x2M.bmp"> <img src="M/x!m_1x4M.bmp"> <img src="M/x!m_1x6M.bmp"> <img src="M/x!m_2a0M.bmp"> <img src="M/x!m_2i0M.bmp"> <img src="M/x!m_2k0M.bmp"> <img src="M/x!m_2k2M.bmp"> <img src="M/x!m_br0M.bmp"> <img src="M/x!f_1i0M.bmp"> <img src="M/x!f_1i2M.bmp"> <img src="M/x!f_1i6M.bmp"> <img src="M/x!f_1i8M.bmp"> <img src="M/x!f_1j0M.bmp"> <img src="M/x!f_1j2M.bmp"> <img src="M/x!f_1j4M.bmp"> <img src="M/x!f_1v0M.bmp"> <img src="M/x!f_1v2M.bmp"> <img src="M/x!f_1v4M.bmp"> <img src="M/x!f_1v6M.bmp"> <img src="M/x!f_2n0M.bmp"> <img src="M/x!f_2n2M.bmp"> <img src="M/x!f_bn0M.bmp"> <img src="M/x!f_bn2M.bmp"></td>
+<td class="list"><img src="M_zoomed/x!m_1c0M.bmp"> <img src="M_zoomed/x!m_1c2M.bmp"> <img src="M_zoomed/x!m_1e0M.bmp"> <img src="M_zoomed/x!m_1e2M.bmp"> <img src="M_zoomed/x!m_1e8M.bmp"> <img src="M_zoomed/x!m_1eaM.bmp"> <img src="M_zoomed/x!m_1i0M.bmp"> <img src="M_zoomed/x!m_1i2M.bmp"> <img src="M_zoomed/x!m_1i4M.bmp"> <img src="M_zoomed/x!m_1m0M.bmp"> <img src="M_zoomed/x!m_1m2M.bmp"> <img src="M_zoomed/x!m_1m6M.bmp"> <img src="M_zoomed/x!m_1x0M.bmp"> <img src="M_zoomed/x!m_1x2M.bmp"> <img src="M_zoomed/x!m_1x4M.bmp"> <img src="M_zoomed/x!m_1x6M.bmp"> <img src="M_zoomed/x!m_2a0M.bmp"> <img src="M_zoomed/x!m_2i0M.bmp"> <img src="M_zoomed/x!m_2k0M.bmp"> <img src="M_zoomed/x!m_2k2M.bmp"> <img src="M_zoomed/x!m_br0M.bmp"> <img src="M_zoomed/x!f_1i0M.bmp"> <img src="M_zoomed/x!f_1i2M.bmp"> <img src="M_zoomed/x!f_1i6M.bmp"> <img src="M_zoomed/x!f_1i8M.bmp"> <img src="M_zoomed/x!f_1j0M.bmp"> <img src="M_zoomed/x!f_1j2M.bmp"> <img src="M_zoomed/x!f_1j4M.bmp"> <img src="M_zoomed/x!f_1v0M.bmp"> <img src="M_zoomed/x!f_1v2M.bmp"> <img src="M_zoomed/x!f_1v4M.bmp"> <img src="M_zoomed/x!f_1v6M.bmp"> <img src="M_zoomed/x!f_2n0M.bmp"> <img src="M_zoomed/x!f_2n2M.bmp"> <img src="M_zoomed/x!f_bn0M.bmp"> <img src="M_zoomed/x!f_bn2M.bmp"></td>
+</tr></table>
+
+<p><i><u>Note:</u> All portraits in this document are shown at the size at which they are rendered in-game when playing at Full HD resolution [1920x1080] with UI scaling enabled.</i></p>
+
+<h2 id="details">Portrait details</h2>
+
+<p>For each included portrait, the character sheet version (layout <code>L</code>) is shown below together with:
+<ul>
+  <li>the original image source <i>(title, link, and author &ndash; as far as I could find out)</i></li>
+  <li>a summary of the post-processing steps I took to turn it into an IWD:EE style portrait.</p>
+</ul>
+
+
+
+
+
+<h3>Male portraits</h3>
+
+<h4>BG1</h4>
+
+<div class="portrait">
+<div class="name">m_1c0</div>
+<div class="character">Coran</div>
+<img src="L/x!m_1c0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://shade-of-stars.deviantart.com/art/Old-Thief-508557472">Old Thief</a>"<br>
+  by Shade-of-Stars
+  </div>
+  <div class="changes">colors adjusted + flipped + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">m_1c2</div>
+<div class="character">Coran</div>
+<img src="L/x!m_1c2L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://www.pinterest.de/pin/509117932878473977">Coran</a>"<br>
+  by Kevin Sidharta
+  </div>
+  <div class="changes">extended + colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">m_1e0</div>
+<div class="character">Edwin Odesseiron</div>
+<img src="L/x!m_1e0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://artastrophe.deviantart.com/art/BG-divided-loyalty-429228542922850303">BG: divided loyalty</a>"<br>
+  by artastrophe
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">m_1e2</div>
+<div class="character">Edwin Odesseiron</div>
+<img src="L/x!m_1e2L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://artastrophe.deviantart.com/art/Edwin-BG-concept-385376321">Edwin (BG concept)</a>"<br>
+  by artastrophe
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">m_1e8</div>
+<div class="character">Edwin Odesseiron</div>
+<img src="L/x!m_1e8L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://www.pinterest.com/pin/509117932878473994/">Edwin</a>"<br>
+  by Kevin Sidharta
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">m_1ea</div>
+<div class="character">Edwin Odesseiron</div>
+<img src="L/x!m_1eaL.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://shade-of-stars.deviantart.com/art/Edwin-780385099">Edwin</a>"<br>
+  by Shade-of-Stars
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">m_1i0</div>
+<div class="character">Kivan</div>
+<img src="L/x!m_1i0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://www.pinterest.ru/pin/334533078550696796/">BG: Please, don't leave me</a>"<br>
+  by sabalmirss
+  </div>
+  <div class="changes">other character removed + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">m_1i2</div>
+<div class="character">Kivan</div>
+<img src="L/x!m_1i2L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://web.archive.org/web/20160122220447/https://smilika.deviantart.com/art/Don-t-bother-me-262912777">Don't bother me</a>"<br>
+  by Smilika
+  </div>
+  <div class="changes">extended + colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">m_1i4</div>
+<div class="character">Kivan</div>
+<img src="L/x!m_1i4L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://innervalue.deviantart.com/art/Baldur-s-Gate-Kivan-800389729">Baldur's Gate: Kivan</a>"<br>
+  by Innervalue
+  </div>
+  <div class="changes">cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">m_1m0</div>
+<div class="character">Minsc</div>
+<img src="L/x!m_1m0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://press.baldursgateii.com/images/beholder_art.png">Beholder</a>"<br>
+  BG2:EE promo art
+  </div>
+  <div class="changes">other characters removed + colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">m_1m2</div>
+<div class="character">Minsc</div>
+<img src="L/x!m_1m2L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://maxpaynt.deviantart.com/art/concept-art-baldurs-gate-minsc-and-boo-541718983">concept-art-baldurs-gate-minsc-and-boo</a>"<br>
+  by maxpaynt
+  </div>
+  <div class="changes">colors adjusted + sharpened + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">m_1m6</div>
+<div class="character">Minsc</div>
+<img src="L/x!m_1m6L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://www.pinterest.cl/pin/447123069256871547/">Minsc</a>"<br>
+  from Heroes of Baldur's Gate
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">m_1x0</div>
+<div class="character">Xan</div>
+<img src="L/x!m_1x0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://elven-nazi.deviantart.com/art/Descending-into-darkness-572987772">Descending into darkness</a>"<br>
+  by Elven-Nazi
+  </div>
+  <div class="changes">cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">m_1x2</div>
+<div class="character">Xan</div>
+<img src="L/x!m_1x2L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://mournfulwizard.tumblr.com/post/136461351132/first-of-all-i-would-like-to-say-that-this-work">Xan</a>"<br>
+  by Elven-Nazi
+  </div>
+  <div class="changes">extended + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">m_1x4</div>
+<div class="character">Xan</div>
+<img src="L/x!m_1x4L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://smilika.deviantart.com/art/BG-Unforgotten-337003425">BG: Unforgotten</a>"<br>
+  by Smilika
+  </div>
+  <div class="changes">extended + colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">m_1x6</div>
+<div class="character">Xan</div>
+<img src="L/x!m_1x6L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://www.pinterest.de/pin/509117932878473988/">Xan</a>"<br>
+  from Heroes of Baldur's Gate
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+
+<h4>BG2</h4>
+
+<div class="portrait">
+<div class="name">m_2a0</div>
+<div class="character">Anomen Delryn</div>
+<img src="L/x!m_2a0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://shade-of-stars.deviantart.com/art/Anomen-780384954">Anomen</a>"<br>
+  by Shade-of-Stars
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">m_2i0</div>
+<div class="character">Jon Irenicus</div>
+<img src="L/x!m_2i0L.bmp">
+<div class="details">
+  <div class="source">
+  <a href="https://wallpapersden.com/baldurs-gate-2-wallpaper/1024x768/">official "Irenicus" BG2 wallpaper</a>
+  </div>
+  <div class="changes">colors adjusted + merged [<a href="https://www.pinterest.com.au/pin/486951778437118439/">variant</a> by unkown author] + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">m_2k0</div>
+<div class="character">Keldorn Firecam</div>
+<img src="L/x!m_2k0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://shade-of-stars.deviantart.com/art/In-Torm-s-name-462144084">In Torm's name!</a>"<br>
+  by Shade-of-Stars
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">m_2k2</div>
+<div class="character">Keldorn Firecam</div>
+<img src="L/x!m_2k2L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://shade-of-stars.deviantart.com/art/Keldorn-780384554">Keldorn</a>"<br>
+  by Shade-of-Stars
+  </div>
+  <div class="changes">extended + colors adjusted + cropped</div>
+</div>
+</div>
+
+<h4>EE &amp; SoD</h4>
+
+<div class="portrait">
+<div class="name">m_br0</div>
+<div class="character">Rasaad yn Bashir</div>
+<img src="L/x!m_br0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://press.baldursgateii.com/images/rasaad_art.png">Rasaad</a>"<br>
+  BG2:EE promo art
+  </div>
+  <div class="changes">outline removed + flipped + cropped</div>
+</div>
+</div>
+
+<h3>Female portraits</h3>
+
+<h4>BG1</h4>
+
+<div class="portrait">
+<div class="name">f_1i0</div>
+<div class="character">Imoen</div>
+<img src="L/x!f_1i0L.bmp">
+<div class="details">
+  <div class="source">
+  <a href="http://press.baldursgateii.com/images/imoen_art.png">official "Imoen" BG2 wallpaper</a>
+  </div>
+  <div class="changes">cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">f_1i2</div>
+<div class="character">Imoen</div>
+<img src="L/x!f_1i2L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://nixxical.deviantart.com/art/Imoen-342625536">Imoen</a>"<br>
+  by NixxiCal
+  </div>
+  <div class="changes">extended + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">f_1i6</div>
+<div class="character">Imoen</div>
+<img src="L/x!f_1i6L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://www.artstation.com/artwork/BmN6d8">Imoen</a>"<br>
+  by Agri Karuniawan
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">f_1i8</div>
+<div class="character">Imoen</div>
+<img src="L/x!f_1i8L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://artastrophe.deviantart.com/art/BG-divided-loyalty-429228503">BG: divided loyalty</a>"<br>
+  by artastrophe
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">f_1j0</div>
+<div class="character">Jaheira</div>
+<img src="L/x!f_1j0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://nightlong86.deviantart.com/art/Jaheira-Fan-Art-Baldurs-Gate-175903659">Jaheira Fan Art - Baldurs Gate</a>"<br>
+  by Nightlong86
+  </div>
+  <div class="changes">sharpened + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">f_1j2</div>
+<div class="character">Jaheira</div>
+<img src="L/x!f_1j2L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://nixxical.deviantart.com/art/Jaheira-376049119">Jaheira</a>"<br>
+  by NixxiCal
+  </div>
+  <div class="changes">cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">f_1j4</div>
+<div class="character">Jaheira</div>
+<img src="L/x!f_1j4L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://www.artstation.com/artwork/BmN6d8">Jaheira</a>"<br>
+  by Agri Karuniawan
+  </div>
+  <div class="changes">cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">f_1v0</div>
+<div class="character">Viconia DeVir</div>
+<img src="L/x!f_1v0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://nixxical.deviantart.com/art/Viconia-DeVir-348295222">Viconia DeVir</a>"<br>
+  by NixxiCal
+  </div>
+  <div class="changes">cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">f_1v2</div>
+<div class="character">Viconia DeVir</div>
+<img src="L/x!f_1v2L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://shade-of-stars.deviantart.com/art/Viconia-780385285">Viconia</a>"<br>
+  by Shade-of-Stars
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">f_1v4</div>
+<div class="character">Viconia DeVir</div>
+<img src="L/x!f_1v4L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://cg-zander.deviantart.com/art/Viconia-de-Vir-139552087">Viconia de Vir</a>"<br>
+  by CG-Zander
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">f_1v6</div>
+<div class="character">Viconia DeVir</div>
+<img src="L/x!f_1v6L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://www.artstation.com/artwork/2xzJxy">Baldur's Gate - Viconia DeVir</a>"<br>
+  by Zoe Fung
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+
+<h4>BG2</h4>
+
+<div class="portrait">
+<div class="name">f_2n0</div>
+<div class="character">Nalia de'Arnise</div>
+<img src="L/x!f_2n0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://shade-of-stars.deviantart.com/art/Nalia-780385199">Nalia</a>"<br>
+  by Shade-of-Stars
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">f_2n2</div>
+<div class="character">Nalia de'Arnise</div>
+<img src="L/x!f_2n2L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://elistraie.deviantart.com/art/Nalia-de-Arnise-607859386">Nalia de'Arnise</a>"<br>
+  by Elistraie
+  </div>
+  <div class="changes">cropped</div>
+</div>
+</div>
+
+<h4>EE &amp; SoD</h4>
+
+<div class="portrait">
+<div class="name">f_bn0</div>
+<div class="character">Neera</div>
+<img src="L/x!f_bn0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://press.baldursgateii.com/images/neera_art.png">Neera</a>"<br>
+  BG2:EE promo art
+  </div>
+  <div class="changes">cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">f_bn2</div>
+<div class="character">Neera</div>
+<img src="L/x!f_bn2L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://nixxical.deviantart.com/art/Neera-452614831">Neera</a>"<br>
+  by NixxiCal
+  </div>
+  <div class="changes">extended + colors adjusted + cropped</div>
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+ACTION_IF (RESOURCE_CONTAINS ~UI.MENU~ ~rgGetGameEnginePortraits~) BEGIN
+  ACTION_IF NOT (RESOURCE_CONTAINS ~UI.MENU~ ~2MPAL1_~) BEGIN
+    FAIL @1002
+  END
+  COPY_EXISTING ~UI.MENU~ ~override~
+    REPLACE_TEXTUALLY ~{'2MPAL1_', 1},~ ~{'2MPAL1_', 1},
+        {'x!f_ta0', 2},
+        {'x!f_ta2', 2},
+        {'x!f_ta4', 2},
+        {'x!f_ta6', 2},
+        {'x!f_td0', 2},
+        {'x!f_td2', 2},
+        {'x!f_td4', 2},
+        {'x!f_td6', 2},
+        {'x!f_tf0', 2},
+        {'x!f_tf2', 2},
+        {'x!f_tf4', 2},
+        {'x!f_tf6', 2},
+        {'x!m_td0', 1},
+        {'x!m_td2', 1},
+        {'x!m_ti0', 1},
+        {'x!m_tm0', 1},
+        {'x!m_tm2', 1},
+        {'x!m_tn0', 1},
+        {'x!m_tt0', 1},
+        {'x!m_tt2', 1},
+        {'x!m_tt6', 1},
+        {'x!m_tt8', 1},
+        {'x!m_tv0', 1},
+        {'x!m_tv2', 1},~
+  BUT_ONLY
+END ELSE BEGIN
+  COPY ~IWDEE-Ineth-Portraits/data/m_iip_pst.lua~ ~override/m_iip_pst.lua~
+END
