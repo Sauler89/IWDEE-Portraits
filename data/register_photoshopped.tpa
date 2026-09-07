@@ -1,5 +1,5 @@
 ACTION_IF (RESOURCE_CONTAINS ~UI.MENU~ ~rgGetGameEnginePortraits~) BEGIN
-  ACTION_IF NOT (RESOURCE_CONTAINS ~UI.MENU~ ~2MPAL1_~) BEGIN
+  ACTION_IF NOT (RESOURCE_CONTAINS ~UI.MENU~ ~{'2MPAL1_', 1},~) BEGIN
     FAIL @1002
   END
   COPY_EXISTING ~UI.MENU~ ~override~
@@ -16,5 +16,5 @@ ACTION_IF (RESOURCE_CONTAINS ~UI.MENU~ ~rgGetGameEnginePortraits~) BEGIN
         {'x!gmtb_', 1},~
   BUT_ONLY
 END ELSE BEGIN
-  COPY ~IWDEE-Ineth-Portraits/data/m_iip_photoshopped.lua~ ~override/m_iip_photoshopped.lua~
+  COPY ~IWDEE-Portraits/data/m_iwp_photoshopped.lua~ ~override/m_iwp_photoshopped.lua~
 END

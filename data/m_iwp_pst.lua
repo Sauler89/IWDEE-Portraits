@@ -1,4 +1,4 @@
--- Generated for IWDEE-Ineth-Portraits v0.1.0-beta3
+-- Registration for IWDEE-Portraits v0.1.0-beta4
 -- 1 = male, 2 = female
 
 table.insert(portraits, {'x!f_ta0', 2})
