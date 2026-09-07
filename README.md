@@ -1,4 +1,4 @@
-# IWDEE Ineth Portraits
+# IWDEE Portraits
 
 Standalone WeiDU portrait collection for **Icewind Dale: Enhanced Edition**.
 
@@ -6,9 +6,9 @@ Current release: **v0.1.0-beta3**
 
 ## Installation
 
-1. Download the release ZIP and extract `IWDEE-Ineth-Portraits` into the Icewind Dale: Enhanced Edition game directory, next to `chitin.key`.
-2. Place a current WeiDU executable in the game directory and name it `setup-IWDEE-Ineth-Portraits.exe`. If another `setup-*.exe` is already present, `IWDEE-Ineth-Portraits/MAKE-SETUP-EXE.bat` can create the correctly named copy.
-3. Run `setup-IWDEE-Ineth-Portraits.exe` and select the desired components.
+1. Download the release ZIP and extract `IWDEE-Portraits` into the Icewind Dale: Enhanced Edition game directory, next to `chitin.key`.
+2. Place a current WeiDU executable in the game directory and name it `setup-IWDEE-Portraits.exe`. If another `setup-*.exe` is already present, `IWDEE-Ineth-Portraits/MAKE-SETUP-EXE.bat` can create the correctly named copy.
+3. Run `setup-IWDEE-Portraits.exe` and select the desired components.
 
 Install Infinity UI++ first if you use it. Reinstall this portrait mod after updating or reinstalling Infinity UI++.
 
