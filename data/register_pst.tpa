@@ -30,5 +30,5 @@ ACTION_IF (RESOURCE_CONTAINS ~UI.MENU~ ~rgGetGameEnginePortraits~) BEGIN
         {'x!m_tv2', 1},~
   BUT_ONLY
 END ELSE BEGIN
-  COPY ~IWDEE-Portraits/data/m_iwp_pst.lua~ ~override/m_iwp_pst.lua~
+  COPY ~IWDEE-Portraits/data/M_IWP20.lua~ ~override/M_IWP20.lua~
 END
