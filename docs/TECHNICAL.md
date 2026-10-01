@@ -27,9 +27,9 @@ The component contains **122 portrait pairs / 244 BMP files**, from the 92-image
 
 The source archive does not supply male/female selector metadata. The existing project registration assigns **82 male** and **40 female** entries based on visual presentation. These assignments affect selector lists only; the rebrand preserves them.
 
-## Infinity UI++ and standalone registration
+## Vanilla UI and Infinity UI++ registration
 
-Install **Infinity UI++ before IWDEE Portraits**. Reinstall the portrait mod after updating or reinstalling Infinity UI++.
+The installer detects the active interface automatically. With the **vanilla IWDEE UI**, no interface mod or manual configuration is required. If Infinity UI++ is used, install **Infinity UI++ before IWDEE Portraits** and reinstall the portrait mod after updating or reinstalling Infinity UI++.
 
 Components `0`, `10`, `20`, `40`, and `200` patch the Infinity UI++ portrait list in `UI.MENU` when `rgGetGameEnginePortraits` is detected. Their registration scripts require the expected portrait-list anchor and stop with an error if it is missing. Component `40` registers all 122 Garion resrefs.
 
@@ -39,17 +39,24 @@ Without Infinity UI++, custom components install these fallback Lua files into `
 
 | Component | Fallback registration |
 |---:|---|
-| `0` | `m_iwp_main.lua` |
-| `10` | `m_iwp_bg.lua` |
-| `20` | `m_iwp_pst.lua` |
-| `30` | `m_iwp_iwd2.lua` |
-| `40` | `m_iwp_garion.lua` |
-| `200` | `m_iwp_photoshopped.lua` |
+| `0` | `M_IWP00.lua` |
+| `10` | `M_IWP10.lua` |
+| `20` | `M_IWP20.lua` |
+| `30` | `M_IWP30.lua` |
+| `40` | `M_IWP40.lua` |
+| `200` | `M_IWP200.lua` |
 
-The rebrand changes fallback filenames and their WeiDU references while preserving portrait resrefs and registration contents.
+These filenames deliberately keep the Lua resource basename at **eight characters or fewer**, matching the Infinity Engine resource-name limit. Portrait resrefs, registration order, and male/female selector assignments are unchanged.
 
 ## Validation scope
 
 The maintainer validated the supplied beta4 content in-game before the rebrand. That validation applies to the supplied portrait content and component behavior; it is not a new in-game test of the renamed release package.
 
 Automated release checks passed with the included WeiDU 24900 installer in isolated IWDEE fixtures: all seven components install, reinstall, and uninstall correctly with and without Infinity UI++. Invalid portrait-list anchors fail with a complete rollback. All 1,205 BMP files match the supplied archive by SHA-256; all 122 Garion sidebar crops match their recorded source pixels. These checks do not launch the game.
+
+
+### v0.1.0-beta5 vanilla-registration audit
+
+The beta5 source audit verifies that all six standalone fallback scripts use unique `M_*.lua` basenames no longer than eight characters, that every WeiDU fallback reference points to the corresponding renamed file, and that the portrait tuples in components `0`, `10`, `20`, `40`, and `200` still match their Infinity UI++ registration lists one-for-one. Component `30` retains its 24-entry standalone registration while continuing to leave Infinity UI++'s built-in IWD2 list untouched.
+
+This is a source-level compatibility audit. A final in-game smoke test with an unmodified vanilla IWDEE UI is still recommended before publishing beta5 as a packaged release.
