@@ -1,4 +1,4 @@
--- Registration for IWDEE-Portraits v0.1.0-beta5
+-- Registration for Sauler-IE-portraits v0.1.0-beta6
 -- Original Portraits From IWD2 v01 registration: 1 = male, 2 = female
 
 table.insert(portraits, {'2FHUM1_', 2})

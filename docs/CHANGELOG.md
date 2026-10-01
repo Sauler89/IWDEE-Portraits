@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.1.0-beta6
+
+- Renamed the project and WeiDU installation identity to **Sauler-IE-portraits**.
+- Restored/locked the intended display split: non-zoomed `L` portraits for character creation and Character Record, zoomed `M` portraits for the in-game sidebar.
+- Added BG:EE, BG2:EE, and EET support to custom portrait components `0`, `10`, `20`, `30`, `40`, and `200`.
+- Kept component `100` IWDEE-only because it replaces IWDEE-specific vanilla resources.
+- Added game-aware Infinity UI++ anchors for IWDEE and BG-family Enhanced Editions.
+- Added IWD2 portrait registration to Infinity UI++ on BG:EE/BG2:EE/EET while preserving its existing IWDEE IWD2 entries.
+- Renamed standalone fallback Lua resources from `M_IWP*.lua` to `M_SIP*.lua`.
+- Added a four-game smoke-test matrix for the new compatibility work.
+
 ## v0.1.0-beta5
 
 - Fixed standalone **vanilla IWDEE UI** portrait registration by renaming all fallback Lua resources to Infinity Engine-safe `M_*.lua` basenames of eight characters or fewer.

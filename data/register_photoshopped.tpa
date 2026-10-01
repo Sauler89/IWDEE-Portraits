@@ -1,9 +1,16 @@
 ACTION_IF (RESOURCE_CONTAINS ~UI.MENU~ ~rgGetGameEnginePortraits~) BEGIN
-  ACTION_IF NOT (RESOURCE_CONTAINS ~UI.MENU~ ~{'2MPAL1_', 1},~) BEGIN
+  ACTION_IF GAME_IS ~iwdee~ BEGIN
+    OUTER_TEXT_SPRINT sip_anchor ~{'2MPAL1_', 1},~
+  END ELSE BEGIN
+    OUTER_TEXT_SPRINT sip_anchor ~{'MANLEYX', 2},~
+  END
+
+  ACTION_IF NOT (RESOURCE_CONTAINS ~UI.MENU~ ~%sip_anchor%~) BEGIN
     FAIL @1002
   END
+
   COPY_EXISTING ~UI.MENU~ ~override~
-    REPLACE_TEXTUALLY ~{'2MPAL1_', 1},~ ~{'2MPAL1_', 1},
+    REPLACE_TEXTUALLY ~%sip_anchor%~ ~%sip_anchor%
         {'x!eff_', 2},
         {'x!hffb_', 2},
         {'x!2mb1_', 1},
@@ -16,5 +23,5 @@ ACTION_IF (RESOURCE_CONTAINS ~UI.MENU~ ~rgGetGameEnginePortraits~) BEGIN
         {'x!gmtb_', 1},~
   BUT_ONLY
 END ELSE BEGIN
-  COPY ~IWDEE-Portraits/data/M_IWP200.lua~ ~override/M_IWP200.lua~
+  COPY ~Sauler-IE-portraits/data/M_SIP200.lua~ ~override/M_SIP200.lua~
 END

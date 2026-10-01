@@ -1,6 +1,6 @@
 # Credits, sources, and rights
 
-IWDEE Portraits is a standalone WeiDU integration of portrait collections created and published by other people. The integration project does not claim ownership of the portrait artwork, characters, games, source images, or the original artists' edits and crops.
+Sauler-IE-portraits is a standalone WeiDU integration of portrait collections created and published by other people. The integration project does not claim ownership of the portrait artwork, characters, games, source images, or the original artists' edits and crops.
 
 ## Ineth portrait collections and preparation
 
@@ -21,7 +21,7 @@ Component `40` is based on **Garion's Portrait Pack - Icewind Dale EE**, version
 
 The supplied archive contains **122 portraits**: the 92-image main collection plus 30 additional dwarf portraits. **Garion** (`garion85` on Nexus Mods) is credited as the creator/uploader of the pack.
 
-The supplied project documentation records that redistribution requires credit and that modification/asset use requires the author's permission. The project maintainer reports having obtained **Garion's explicit permission** to include and adapt these portraits in IWDEE Portraits. This records the maintainer's stated permission; it does not grant additional rights to others. The Garion assets must not be used in a commercial/paid build or a Donation Points build without any additional permission that may be required by the author.
+The supplied project documentation records that redistribution requires credit and that modification/asset use requires the author's permission. The project maintainer reports having obtained **Garion's explicit permission** to include and adapt these portraits in Sauler-IE-portraits. This records the maintainer's stated permission; it does not grant additional rights to others. The Garion assets must not be used in a commercial/paid build or a Donation Points build without any additional permission that may be required by the author.
 
 For component 40, the original 210x330 BMP files are preserved byte-for-byte as the installed large portraits, with only the resource filenames changed. New 169x266 sidebar portraits are crop-only derivatives made for this integration; no image scaling or repainting is applied.
 
@@ -29,7 +29,7 @@ For component 40, the original 210x330 BMP files are preserved byte-for-byte as 
 
 The standalone component layout, WeiDU integration, Infinity UI++ compatibility logic, source manifests, verification, Garion sidebar crops, and release packaging were prepared by **Sauler89 / the community project**.
 
-Special thanks to **Pecca**, author of Infinity UI++, whose IWDEE portrait-list implementation is supported by this mod. No Infinity UI++ files are distributed here.
+Special thanks to **Pecca**, author of Infinity UI++, whose Enhanced Edition portrait-list implementation is supported by this mod. No Infinity UI++ files are distributed here.
 
 ## Detailed artwork attribution
 

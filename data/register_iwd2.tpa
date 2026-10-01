@@ -1,0 +1,41 @@
+ACTION_IF (RESOURCE_CONTAINS ~UI.MENU~ ~rgGetGameEnginePortraits~) BEGIN
+  ACTION_IF GAME_IS ~iwdee~ BEGIN
+    // Infinity UI++ already contains the 24 IWD2 portrait entries in IWDEE.
+  END ELSE BEGIN
+    OUTER_TEXT_SPRINT sip_anchor ~{'MANLEYX', 2},~
+
+    ACTION_IF NOT (RESOURCE_CONTAINS ~UI.MENU~ ~%sip_anchor%~) BEGIN
+      FAIL @1002
+    END
+
+    COPY_EXISTING ~UI.MENU~ ~override~
+      REPLACE_TEXTUALLY ~%sip_anchor%~ ~%sip_anchor%
+        {'2FHUM1_', 2},
+        {'2FHUM2_', 2},
+        {'2FHUM3_', 2},
+        {'2MHUM2_', 1},
+        {'2MHUM3_', 1},
+        {'2MHUM4_', 1},
+        {'2MHUM5_', 1},
+        {'2MHUM6_', 1},
+        {'2MHUM7_', 1},
+        {'2MPAL1_', 1},
+        {'2MAAS1_', 1},
+        {'2FTIF1_', 2},
+        {'2FELF1_', 2},
+        {'2FELF2_', 2},
+        {'2FELF3_', 2},
+        {'2MELF1_', 1},
+        {'2FDEF1_', 2},
+        {'2MDEF1_', 1},
+        {'2MDEF2_', 1},
+        {'2MDWF1_', 1},
+        {'2MDWF2_', 1},
+        {'2FGNM1_', 2},
+        {'2MGNM1_', 1},
+        {'2MHAF1_', 1},~
+    BUT_ONLY
+  END
+END ELSE BEGIN
+  COPY ~Sauler-IE-portraits/data/M_SIP30.lua~ ~override/M_SIP30.lua~
+END

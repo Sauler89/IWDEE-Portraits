@@ -1,0 +1,48 @@
+BACKUP ~Sauler-IE-portraits/backup~
+AUTHOR ~Sauler89 / community project~
+VERSION ~v0.1.0-beta6~
+
+README ~Sauler-IE-portraits/README.md~
+
+LANGUAGE ~English~ ~english~ ~Sauler-IE-portraits/tra/english.tra~
+
+BEGIN ~Sauler-IE-portraits - Main Collection (357 portraits)~
+DESIGNATED 0
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @1000
+COPY ~Sauler-IE-portraits/data/main~ ~override~
+INCLUDE ~Sauler-IE-portraits/data/register_main.tpa~
+
+BEGIN ~Sauler-IE-portraits - Baldur's Gate Characters (36 portraits)~
+DESIGNATED 10
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @1000
+COPY ~Sauler-IE-portraits/data/bg~ ~override~
+INCLUDE ~Sauler-IE-portraits/data/register_bg.tpa~
+
+BEGIN ~Sauler-IE-portraits - Planescape: Torment Characters (24 portraits)~
+DESIGNATED 20
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @1000
+COPY ~Sauler-IE-portraits/data/pst~ ~override~
+INCLUDE ~Sauler-IE-portraits/data/register_pst.tpa~
+
+BEGIN ~Sauler-IE-portraits - Icewind Dale II Portraits (24 portraits)~
+DESIGNATED 30
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @1000
+COPY ~Sauler-IE-portraits/data/iwd2~ ~override~
+INCLUDE ~Sauler-IE-portraits/data/register_iwd2.tpa~
+
+BEGIN ~Sauler-IE-portraits - Garion's Portrait Pack (122 portraits, zoomed sidebar)~
+DESIGNATED 40
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @1000
+COPY ~Sauler-IE-portraits/data/garion~ ~override~
+INCLUDE ~Sauler-IE-portraits/data/register_garion.tpa~
+
+BEGIN ~Sauler-IE-portraits - IWDEE Zoomed Vanilla Sidebar Portraits (59 replacements)~
+DESIGNATED 100
+REQUIRE_PREDICATE GAME_IS ~iwdee~ @1001
+COPY ~Sauler-IE-portraits/data/vanilla_zoomed~ ~override~
+
+BEGIN ~Sauler-IE-portraits - Photoshopped Variations (10 portraits, zoomed sidebar)~
+DESIGNATED 200
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet iwdee~ @1000
+COPY ~Sauler-IE-portraits/data/photoshopped~ ~override~
+INCLUDE ~Sauler-IE-portraits/data/register_photoshopped.tpa~
