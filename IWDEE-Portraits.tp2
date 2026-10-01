@@ -1,6 +1,6 @@
 BACKUP ~IWDEE-Portraits/backup~
 AUTHOR ~Sauler89 / community project~
-VERSION ~v0.1.0-beta4~
+VERSION ~v0.1.0-beta5~
 
 README ~IWDEE-Portraits/README.md~
 
@@ -30,7 +30,7 @@ REQUIRE_PREDICATE GAME_IS ~iwdee~ @1000
 COPY ~IWDEE-Portraits/data/iwd2~ ~override~
 
 ACTION_IF NOT (RESOURCE_CONTAINS ~UI.MENU~ ~rgGetGameEnginePortraits~) BEGIN
-  COPY ~IWDEE-Portraits/data/m_iwp_iwd2.lua~ ~override/m_iwp_iwd2.lua~
+  COPY ~IWDEE-Portraits/data/M_IWP30.lua~ ~override/M_IWP30.lua~
 END
 
 BEGIN ~IWDEE Portraits - Garion's Portrait Pack (122 portraits, zoomed sidebar)~
