@@ -1,0 +1,40 @@
+name: package-beta6-test
+
+on:
+  push:
+    branches:
+      - sauler-ie-portraits-beta6
+    paths:
+      - '.github/workflows/package-beta6-test.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: sauler-ie-portraits-beta6
+
+      - name: Build test ZIP
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf package
+          mkdir -p package/Sauler-IE-portraits
+          cp Sauler-IE-portraits.tp2 package/Sauler-IE-portraits/
+          cp README.md CREDITS.md MAKE-SETUP-EXE.bat package/Sauler-IE-portraits/
+          cp -R data docs tra package/Sauler-IE-portraits/
+          cp setup-Sauler-IE-portraits.exe package/
+          cd package
+          zip -r ../Sauler-IE-portraits-v0.1.0-beta6-test.zip Sauler-IE-portraits setup-Sauler-IE-portraits.exe
+
+      - name: Upload ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: Sauler-IE-portraits-v0.1.0-beta6-test
+          path: Sauler-IE-portraits-v0.1.0-beta6-test.zip
+          if-no-files-found: error
