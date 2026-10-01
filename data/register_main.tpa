@@ -363,5 +363,5 @@ ACTION_IF (RESOURCE_CONTAINS ~UI.MENU~ ~rgGetGameEnginePortraits~) BEGIN
         {'x!!ox0', 1},~
   BUT_ONLY
 END ELSE BEGIN
-  COPY ~IWDEE-Portraits/data/m_iwp_main.lua~ ~override/m_iwp_main.lua~
+  COPY ~IWDEE-Portraits/data/M_IWP00.lua~ ~override/M_IWP00.lua~
 END
