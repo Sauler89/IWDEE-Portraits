@@ -1,8 +1,9 @@
 # IWDEE Portraits
 
-A standalone WeiDU portrait collection for **Icewind Dale: Enhanced Edition**, with optional portrait packs, zoomed sidebar portraits, and **Infinity UI++** support.
+A standalone WeiDU portrait collection for **Icewind Dale: Enhanced Edition**, with optional portrait packs, zoomed sidebar portraits, automatic **vanilla UI** registration, and **Infinity UI++** support.
 
 **Current release:** [v0.1.0-beta4](https://github.com/Sauler89/IWDEE-Portraits/releases/tag/v0.1.0-beta4)  
+**Development version (`main`):** v0.1.0-beta5  
 **Included:** 573 custom portraits + 59 vanilla sidebar replacements.
 
 ## Download and installation
@@ -11,7 +12,7 @@ A standalone WeiDU portrait collection for **Icewind Dale: Enhanced Edition**, w
 2. Extract it into the Icewind Dale: Enhanced Edition game directory, next to `chitin.key`.
 3. Run `setup-IWDEE-Portraits.exe` and choose the desired components.
 
-If you use **Infinity UI++**, install it before IWDEE Portraits. After updating or reinstalling Infinity UI++, reinstall this mod as well.
+With the **vanilla IWDEE interface**, no UI mod or manual configuration is required: the installer automatically uses native `M_*.lua` portrait registration. If you use **Infinity UI++**, install it before IWDEE Portraits; after updating or reinstalling Infinity UI++, reinstall this mod as well.
 
 > Upgrading from an earlier beta? Uninstall the old components with their original installer before replacing the old mod files. See the [release notes](docs/RELEASE-NOTES-v0.1.0-beta4.md) for details.
 
@@ -34,8 +35,9 @@ Custom portraits include both a large (`L`) portrait and a zoomed sidebar (`M`) 
 ## Documentation
 
 - [Changelog](docs/CHANGELOG.md)
-- [Release notes](docs/RELEASE-NOTES-v0.1.0-beta4.md)
-- [Technical notes and Infinity UI++ compatibility](docs/TECHNICAL.md)
+- [Current release notes](docs/RELEASE-NOTES-v0.1.0-beta4.md)
+- [v0.1.0-beta5 development notes](docs/RELEASE-NOTES-v0.1.0-beta5.md)
+- [Technical notes and vanilla UI / Infinity UI++ compatibility](docs/TECHNICAL.md)
 - [Full credits, original sources, permissions, and artwork attribution](CREDITS.md)
 
 ## Credits
