@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.1.0-beta5
+
+- Fixed standalone **vanilla IWDEE UI** portrait registration by renaming all fallback Lua resources to Infinity Engine-safe `M_*.lua` basenames of eight characters or fewer.
+- Standardized the six fallback resources as `M_IWP00.lua`, `M_IWP10.lua`, `M_IWP20.lua`, `M_IWP30.lua`, `M_IWP40.lua`, and `M_IWP200.lua`.
+- Updated every WeiDU fallback reference while preserving portrait resrefs, registration order, and male/female selector assignments.
+- Kept Infinity UI++ behavior unchanged: components `0`, `10`, `20`, `40`, and `200` patch its portrait list when detected, while component `30` relies on Infinity UI++'s existing IWD2 entries.
+- Documented automatic vanilla UI / Infinity UI++ detection and performed a source-level one-to-one registration audit.
+
+A final in-game vanilla-UI smoke test is recommended before publishing the packaged beta5 release.
+
 ## v0.1.0-beta4
 
 - Rebranded the project as **IWDEE Portraits**, with `IWDEE-Portraits/`, `IWDEE-Portraits.tp2`, and `setup-IWDEE-Portraits.exe` as its installation identity.
