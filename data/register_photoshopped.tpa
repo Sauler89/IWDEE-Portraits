@@ -16,5 +16,5 @@ ACTION_IF (RESOURCE_CONTAINS ~UI.MENU~ ~rgGetGameEnginePortraits~) BEGIN
         {'x!gmtb_', 1},~
   BUT_ONLY
 END ELSE BEGIN
-  COPY ~IWDEE-Portraits/data/m_iwp_photoshopped.lua~ ~override/m_iwp_photoshopped.lua~
+  COPY ~IWDEE-Portraits/data/M_IWP200.lua~ ~override/M_IWP200.lua~
 END
