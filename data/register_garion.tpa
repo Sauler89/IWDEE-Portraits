@@ -128,5 +128,5 @@ ACTION_IF (RESOURCE_CONTAINS ~UI.MENU~ ~rgGetGameEnginePortraits~) BEGIN
         {'gvmp007', 2},~
   BUT_ONLY
 END ELSE BEGIN
-  COPY ~IWDEE-Portraits/data/m_iwp_garion.lua~ ~override/m_iwp_garion.lua~
+  COPY ~IWDEE-Portraits/data/M_IWP40.lua~ ~override/M_IWP40.lua~
 END
