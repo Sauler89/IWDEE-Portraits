@@ -1,0 +1,35 @@
+name: retag-clean-release
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/retag-clean-release.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  retag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Remove workflow and move release tag
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "Sauler"
+          git config user.email "138236347+Sauler89@users.noreply.github.com"
+          rm -f .github/workflows/retag-clean-release.yml
+          rmdir .github/workflows 2>/dev/null || true
+          rmdir .github 2>/dev/null || true
+          git add -u
+          git commit -m "Finalize Sauler IE Portraits v0.1.0"
+          git push origin HEAD:main
+          git tag -f v0.1.0 HEAD
+          git push --force origin v0.1.0
