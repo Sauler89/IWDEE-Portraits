@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Priests</title>
+  <style>
+    body, button { background: #b9b3ad; color: #262121; font-family: Verdana, Geneva, sans-serif; font-size: 15px; line-height: 150% }
+    pre, code { font-family: Monaco, "Andale Mono", AndaleMono, "DejaVu Sans Mono", monospace; color: #444141; font-size: inherit }
+    h1, h2, h3 { color:#5a2a11 }
+    h1 { font-size: 34px; margin: 0.5em 0 0.5em 0 }
+    h2 { font-size: 24px; margin: 1.2em 0 0.7em 0 }
+    h3 { font-size: 18px; font-style: italic; /*border-bottom: solid 1px #75594c;*/ margin: 1em 0 0.5em 0 }
+    h4 { font-size: 15px; color:#000; border-bottom: solid 1px #746d6a; margin: 1em 0 0.5em 0 }
+    a { text-decoration: none; color: #5a3d00 }
+    a:hover { color: #723217 }
+    a:active { color: #562612 }
+    p, ul { margin: 0.2em 0 0.2em 0 }
+    p + p, p + ul, p + table { margin-top: 0.6em }
+    ul + p, table + p { margin-top: 0.9em }
+    li + li { margin-top: 0.3em }
+    th, td { vertical-align: top }
+    table.compact { margin: 0.3em 0.6em 0.5em 0.6em }
+    table.compact th { font-weight: normal }
+    table.compact th, table.compact td { padding: 0 5px; text-align: left }
+    table.grid { border-collapse: collapse }
+    table.grid th, table.grid td { border: solid 1px #746d6a }
+    table.grid th { background: #a9a39a }
+    table.comparison { border-collapse: separate; border-spacing: 0.5em; /*width:100%; table-layout:fixed*/ }
+    table.comparison th { background: #3e3a35; padding: 0.3em 0.8em; text-align: left }
+    table.comparison th, table.comparison th code { color: #ada8a1; font-size: 18px }
+    table.comparison td { background: #98918b; padding: 0.8em }
+    table.comparison td.subheader { background: #a9a39a; text-align: center; font-style: italic; padding-bottom: 0.2em }
+    table.comparison, .portrait { background: #a9a39a; border: solid 1px #b6b4b3; border-right-color: #6f6966; border-bottom-color: #6f6966 }
+    .portrait { display: inline-block; vertical-align: top; margin: 0.5em; width: 240px }
+    .portrait img { display: block; width: 240px; height: 377px } /* :} */
+    .portrait .name { color: #201e1d; font-size: 16px; font-weight: bold; text-align: center; padding:0.2em }
+    .portrait .character { color: #201e1d; text-align: center; margin:-0.35em 0.2em 0.23em 0.2em; padding:0 }
+    .portrait .details { padding: 0.5em }
+    .portrait .source { font-weight:bold; margin:0.2em 0 0.15em 0 }
+    .portrait .changes { font-size:92%; color: #293944; font-style:italic; margin: 0.35em 0 0.15em 0; padding-top:0.25em; border-top: dotted 1px #595553  }
+    .portrait.orig .name, div.portrait.orig .details { background: #617f5e }
+    .portrait.orig .name { color: #002000 }
+    .portrait.orig_variant .name, div.portrait.orig_variant .details { background: #7f6364 }
+    .portrait.orig_variant .name { color: #210000 }
+    .list img { width: 76px; height: 118px } /* : */
+    .spoiler { display: table; margin: 0 0 0.3em 0; padding: 0; border-radius: 7px; background: #98918b }
+    .spoiler-header { display: inline-block; padding: 0 1em; font-weight: bold }
+    .spoiler-toggle { display: inline-block; margin: 0.3em; padding: 0.1em 0.5em; background: #bfb7af; border-radius: 4px; border: outset 1px #bfb7af }
+    .spoiler-toggle:hover { background: #c8c1b8; }
+    .spoiler > .spoiler-content { margin: 0 1em 1em 1em; padding: 0.7em; display: none; }
+    .spoiler.open > .spoiler-content { display: block; background: #b9b3ad }
+    .spoiler-toggle:before { content: 'Show'; }
+    .spoiler.open .spoiler-toggle:before { content: 'Hide'; }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', initializeSpoilers);
+    window.onload = fixImagesOnLinux;
+
+    function initializeSpoilers() {
+        var spoilers = document.getElementsByClassName('spoiler');
+        for (var i = 0; i < spoilers.length; i++)
+            spoilers[i].className = 'spoiler';
+    }
+
+    function toggleSpoiler(spoiler) {
+       if (spoiler.className == 'spoiler')
+            spoiler.className = 'spoiler open';
+       else
+            spoiler.className = 'spoiler';
+    }
+
+    // Make images work on Linux if the game folder was tolower'd:
+    function fixImagesOnLinux() {
+        var images = document.getElementsByTagName('img');
+        for (var i = 0; i < images.length; i++) {
+            var image = images[i];
+            if (image.complete) {
+                var isError = image.naturalHeight == 0;
+                if (isError && image.getAttribute('src') != null) {
+                    image.src = image.getAttribute('src').toLowerCase();
+                }
+            }
+        }
+    }
+  </script>
+</head>
+
+<body>
+
+<h1><i>IWD:EE portrait pack:</i> Priests</h1>
+
+<table class="compact">
+  <tr><th><b> Version: </b></td><td> 03</td></tr>
+  <tr><th><b> Release date: </b></td><td> May 2022</td></tr>
+  <tr><th><b> Links: </b></td><td> <a href="https://forums.beamdog.com/discussion/46782/ineths-collection-of-icewind-dale-style-portraits/p1">forum thread</a> </td></tr>
+  <tr><th><b> Collection author: </b></td><td> Ineth </td></tr>
+  <tr><th><b> Image artists: </b></td><td> <i>see the <a href="#details">Portrait details</a> section below</i> </td></tr>
+</table>
+
+
+
+<h2 id="install">Installation</h2>
+
+<h3 id="install_mod">As a mod</h3>
+
+<p>This portrait pack can be installed the same way as most IWD:EE mods:</p>
+
+<ul>
+  <li>
+    <div class="spoiler open">
+      <div class="spoiler-header">Instructions for Windows</div>
+      <button class="spoiler-toggle" onclick="toggleSpoiler(this.parentElement);"></button>
+      <div class="spoiler-content">
+        <ol>
+          <li>Find your <i>Icewind Dale: Enhanced Edition</i> game directory.<br>
+          This depends on how you installed the game. Some possible locations are:
+            <table class="compact grid">
+              <tr><th><i> Steam version: </i></th><td> <code>C:\Program Files (x86)\Steam\SteamApps\common\Icewind Dale Enhanced Edition\</code> </td></tr>
+              <tr><th><i> GOG version: </i></th><td> <code>C:\GOG Games\Icewind Dale Enhanced Edition\</code> </td></tr>
+            </table>
+          </li>
+          <li>Extract this mod into the game directory.<br>
+          When done correctly, your game directory will contain the file <code>setup-PortraitsPriests.exe</code> and the folder <code>PortraitsPriests</code>.</li>
+          <li>Double-click <code>setup-PortraitsPriests.exe</code> and follow the instructions on screen.<br>
+          (To help you decide between the normal vs zoomed-in side-bar portraits, refer to the <a href="#layouts">Portrait layouts</a> section below.)</li>
+        </ol>
+        <br>You can run <code>setup-PortraitsPriests.exe</code> again afterwards to uninstall or reinstall the mod.
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class="spoiler open">
+      <div class="spoiler-header">Instructions for macOS</div>
+      <button class="spoiler-toggle" onclick="toggleSpoiler(this.parentElement);"></button>
+      <div class="spoiler-content">
+        <ol>
+          <li>Find your <i>Icewind Dale: Enhanced Edition</i> game directory.<br>
+          This depends on how you installed the game, and can be a bit difficult to navigate to.
+          See step 1 of <a href="https://forums.beamdog.com/discussion/31155/the-hitchhikers-guide-to-installing-mods-on-osx/p1">this guide</a> for help.</li>
+          <li>Extract this mod into the game directory.<br>
+          When done correctly, your game directory will <i>directly</i> contain the folder <code>PortraitsPriests</code>.</li>
+          <li>Download the <a href="https://github.com/subtledoctor/MacOS_Weidu_Launcher/releases">MacOS Weidu Launcher</a>, unzip it, and drop the <code>.app</code> into your game directory and double-click it there. Then, follow the instructions on screen.<br>
+          (To help you decide between the normal vs zoomed-in side-bar portraits, refer to the <a href="#layouts">Portrait layouts</a> section below.)</li>
+        </ol>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class="spoiler open">
+      <div class="spoiler-header">Instructions for Linux</div>
+      <button class="spoiler-toggle" onclick="toggleSpoiler(this.parentElement);"></button>
+      <div class="spoiler-content">
+        <p>Making your Linux installation of IWD:EE ready for WeiDU-based mod installers, takes a bit of work &ndash; so you may find it less time-consuming to use the <a href="#install_manual">manual installation</a> method for portraits instead.</p>
+        
+        <p>If you <i>do</i> want to install this portrait pack as a mod, follow <a href="https://www.gibberlings3.net/forums/topic/28516-the-linux-users-guide-to-installing-mods-on-the-enhanced-editions/">this guide</a>.</p>
+      </div>
+    </div>
+  </li>
+</ul>
+
+<p>There are no known incompatibilities or install order requirements relative to other mods.</p>
+
+<h3 id="install_manual">Manual installation</h3>
+
+<p>Alternatively, you can manually copy the portraits into your user account's portraits folder, where the game will find them:</p>
+
+<ul>
+<li>
+<div class="spoiler open">
+  <div class="spoiler-header">Instructions</div>
+  <button class="spoiler-toggle" onclick="toggleSpoiler(this.parentElement);"></button>
+  <div class="spoiler-content">
+    <ol>
+    <li>Find your IWD:EE user portraits folder:
+      <table class="compact grid">
+        <tr><th><i> Windows &amp; macOS: </i></th><td> <code>Documents/Icewind Dale - Enhanced Edition/Portraits</code> </td></tr>
+        <tr><th><i> Linux: </i></th><td> <code>.local/share/Icewind Dale - Enhanced Edition/portraits/</code> </td></tr>
+      </table>
+      <small>(The paths shown are relative to your user account's home directory. You have to start the game at least once, for them to be created.)</small>
+    </li>
+    <li>Copy all the <code>.bmp</code> files from the <code>L</code> subfolder of this download, to that location.</li>
+    <li>Copy all the <code>.bmp</code> files from the <code>M</code> subfolder <b>or</b> from the <code>M_zoomed</code> subfolder to that location as well.<br>
+    <small>(Refer to the <a href="#layouts">Portrait layouts</a> section below to help you choose.)</small></li>
+    <li>If you have patch version 2.x of the game, the portraits now appear in the in-game portrait selection list, after the original portraits.<br>
+    <i>(However, unlike when installing the portrait pack as a mod, they're not separated by gender - all portraits show up for both male and female characters.)</i><br>
+    If you have patch version 1.x of the game, a "Custom portraits" button instead appears on the in-game portrait selection screen, allowing you to pick them.</li>
+    </ol>
+  </div>
+</div>
+</ul>
+
+<h2 id="layouts">Portrait layouts</h2>
+
+<p>This portrait pack contains three <code>.bmp</code> files per portrait &ndash; one for each of these layouts:</p>
+
+<table class="comparison"><tr>
+<th><code>L</code></h3></th>
+<th><code>M</code></h3></th>
+<th><code>M_zoomed</h3></th>
+</tr><tr>
+<td>
+  <div style="position:relative; width:297px; height:429px">
+    <img src="L/x!%23cz0L.bmp" width="240x377" height="" style="position:absolute; left:23px; top:22px">
+    <div style="position:absolute; top:0; left:0; width:297px; height:429px; background-image:url('http://i.imgur.com/WSsIbss.png'); pointer-events:none"></div>
+  </div>
+  <p><b>Character sheet portrait</b></p>
+  <p>Cropped like the built-in ones.</p>
+</td>
+<td>
+  <div style="position:relative; width:125px; height:161px">
+    <img src="M/x!%23cz0M.bmp" width="76x118" height="" style="position:absolute; left:25px; top:22px">
+    <div style="position:absolute; top:0; left:0; width:125px; height:161px; background-image:url('http://i.imgur.com/FgCsroj.png'); pointer-events:none"></div>
+  </div>
+  <p><b>Side-bar portrait</b></p>
+  <p>Cropped like the built-in ones.</p>
+</td>
+<td style="max-width: 36em">
+  <div style="position:relative; width:125px; height:161px">
+    <img src="M_zoomed/x!%23cz0M.bmp" width="76x118" height="" style="position:absolute; left:25px; top:22px">
+    <div style="position:absolute; top:0; left:0; width:125px; height:161px; background-image:url('http://i.imgur.com/FgCsroj.png'); pointer-events:none"></div>
+  </div>
+  <p><b>Side-bar portrait</b></p>
+  <p>Cropped differently from the built-in ones:</p>
+  <ul>
+    <li>Zoomed in more closely on the face.</li>
+    <li>Flipped where necessary to make sure no character faces right<br> <small>(because that's where the screen edge is)</small>.
+  </ul>
+  
+  <p>It's up to you whether you want to use this instead of the standard <code>M</code> layout.
+  <small>(See the <a href="#install">Installation</a> section above.)</small></p>
+  
+  <p>If you want the built-in portraits to use this layout as well, install the "<i>Zoomed-in side bar portraits</i>" component of my <a href="https://forums.beamdog.com/discussion/45897/mod-iwd-ee-portrait-variations/p1">IWD:EE Portrait Variations</a> mod.
+</td>
+</tr></table>
+
+<p>Preview of the two side-bar versions for all included portraits:</p>
+
+<table class="comparison"><tr>
+<th><code>M</code></h3></th>
+<th><code>M_zoomed</h3></th>
+</tr><tr>
+<td class="list"><img src="M/x!!m00M.bmp"> <img src="M/x!!m02M.bmp"> <img src="M/x!!m04M.bmp"> <img src="M/x!!mb0M.bmp"> <img src="M/x!!mb2M.bmp"> <img src="M/x!!mb4M.bmp"> <img src="M/x!!mb6M.bmp"> <img src="M/x!!mb8M.bmp"> <img src="M/x!!cb0M.bmp"> <img src="M/x!!cb2M.bmp"> <img src="M/x!!cb4M.bmp"> <img src="M/x!!cs0M.bmp"> <img src="M/x!!cr0M.bmp"> <img src="M/x!!cr2M.bmp"> <img src="M/x!!cr4M.bmp"> <img src="M/x!!cv0M.bmp"> <img src="M/x!!cx0M.bmp"> <img src="M/x!!cy0M.bmp"> <img src="M/x!!cz0M.bmp"> <img src="M/x!!cz2M.bmp"> <img src="M/x!!d00M.bmp"> <img src="M/x!!d02M.bmp"> <img src="M/x!!d04M.bmp"> <img src="M/x!!da0M.bmp"> <img src="M/x!!da2M.bmp"> <img src="M/x!!db0M.bmp"> <img src="M/x!!db2M.bmp"> <img src="M/x!!df0M.bmp"> <img src="M/x!!di0M.bmp"> <img src="M/x!!di2M.bmp"> <img src="M/x!!dl0M.bmp"> <img src="M/x!!dp0M.bmp"> <img src="M/x!!ds0M.bmp"> <img src="M/x!!dw0M.bmp"> <img src="M/x!!dw2M.bmp"> <img src="M/x!!s00M.bmp"> <img src="M/x!!s02M.bmp"> <img src="M/x!%23m00M.bmp"> <img src="M/x!%23m02M.bmp"> <img src="M/x!%23mb0M.bmp"> <img src="M/x!%23ch0M.bmp"> <img src="M/x!%23ck0M.bmp"> <img src="M/x!%23cp0M.bmp"> <img src="M/x!%23cv0M.bmp"> <img src="M/x!%23cv2M.bmp"> <img src="M/x!%23cv4M.bmp"> <img src="M/x!%23cy0M.bmp"> <img src="M/x!%23cy2M.bmp"> <img src="M/x!%23cz0M.bmp"> <img src="M/x!%23da0M.bmp"> <img src="M/x!%23db0M.bmp"> <img src="M/x!%23dd0M.bmp"> <img src="M/x!%23df0M.bmp"> <img src="M/x!%23dk0M.bmp"> <img src="M/x!%23dk2M.bmp"> <img src="M/x!%23dk3M.bmp"> <img src="M/x!%23dm0M.bmp"> <img src="M/x!%23dm2M.bmp"> <img src="M/x!%23dm4M.bmp"> <img src="M/x!%23dp0M.bmp"> <img src="M/x!%23ds0M.bmp"> <img src="M/x!%23dv0M.bmp"> <img src="M/x!%23dv2M.bmp"> <img src="M/x!%23dv4M.bmp"> <img src="M/x!%23dw0M.bmp"> <img src="M/x!%23dw2M.bmp"> <img src="M/x!%23s00M.bmp"> <img src="M/x!%23s04M.bmp"></td>
+<td class="list"><img src="M_zoomed/x!!m00M.bmp"> <img src="M_zoomed/x!!m02M.bmp"> <img src="M_zoomed/x!!m04M.bmp"> <img src="M_zoomed/x!!mb0M.bmp"> <img src="M_zoomed/x!!mb2M.bmp"> <img src="M_zoomed/x!!mb4M.bmp"> <img src="M_zoomed/x!!mb6M.bmp"> <img src="M_zoomed/x!!mb8M.bmp"> <img src="M_zoomed/x!!cb0M.bmp"> <img src="M_zoomed/x!!cb2M.bmp"> <img src="M_zoomed/x!!cb4M.bmp"> <img src="M_zoomed/x!!cs0M.bmp"> <img src="M_zoomed/x!!cr0M.bmp"> <img src="M_zoomed/x!!cr2M.bmp"> <img src="M_zoomed/x!!cr4M.bmp"> <img src="M_zoomed/x!!cv0M.bmp"> <img src="M_zoomed/x!!cx0M.bmp"> <img src="M_zoomed/x!!cy0M.bmp"> <img src="M_zoomed/x!!cz0M.bmp"> <img src="M_zoomed/x!!cz2M.bmp"> <img src="M_zoomed/x!!d00M.bmp"> <img src="M_zoomed/x!!d02M.bmp"> <img src="M_zoomed/x!!d04M.bmp"> <img src="M_zoomed/x!!da0M.bmp"> <img src="M_zoomed/x!!da2M.bmp"> <img src="M_zoomed/x!!db0M.bmp"> <img src="M_zoomed/x!!db2M.bmp"> <img src="M_zoomed/x!!df0M.bmp"> <img src="M_zoomed/x!!di0M.bmp"> <img src="M_zoomed/x!!di2M.bmp"> <img src="M_zoomed/x!!dl0M.bmp"> <img src="M_zoomed/x!!dp0M.bmp"> <img src="M_zoomed/x!!ds0M.bmp"> <img src="M_zoomed/x!!dw0M.bmp"> <img src="M_zoomed/x!!dw2M.bmp"> <img src="M_zoomed/x!!s00M.bmp"> <img src="M_zoomed/x!!s02M.bmp"> <img src="M_zoomed/x!%23m00M.bmp"> <img src="M_zoomed/x!%23m02M.bmp"> <img src="M_zoomed/x!%23mb0M.bmp"> <img src="M_zoomed/x!%23ch0M.bmp"> <img src="M_zoomed/x!%23ck0M.bmp"> <img src="M_zoomed/x!%23cp0M.bmp"> <img src="M_zoomed/x!%23cv0M.bmp"> <img src="M_zoomed/x!%23cv2M.bmp"> <img src="M_zoomed/x!%23cv4M.bmp"> <img src="M_zoomed/x!%23cy0M.bmp"> <img src="M_zoomed/x!%23cy2M.bmp"> <img src="M_zoomed/x!%23cz0M.bmp"> <img src="M_zoomed/x!%23da0M.bmp"> <img src="M_zoomed/x!%23db0M.bmp"> <img src="M_zoomed/x!%23dd0M.bmp"> <img src="M_zoomed/x!%23df0M.bmp"> <img src="M_zoomed/x!%23dk0M.bmp"> <img src="M_zoomed/x!%23dk2M.bmp"> <img src="M_zoomed/x!%23dk3M.bmp"> <img src="M_zoomed/x!%23dm0M.bmp"> <img src="M_zoomed/x!%23dm2M.bmp"> <img src="M_zoomed/x!%23dm4M.bmp"> <img src="M_zoomed/x!%23dp0M.bmp"> <img src="M_zoomed/x!%23ds0M.bmp"> <img src="M_zoomed/x!%23dv0M.bmp"> <img src="M_zoomed/x!%23dv2M.bmp"> <img src="M_zoomed/x!%23dv4M.bmp"> <img src="M_zoomed/x!%23dw0M.bmp"> <img src="M_zoomed/x!%23dw2M.bmp"> <img src="M_zoomed/x!%23s00M.bmp"> <img src="M_zoomed/x!%23s04M.bmp"></td>
+</tr></table>
+
+<p><i><u>Note:</u> All portraits in this document are shown at the size at which they are rendered in-game when playing at Full HD resolution [1920x1080] with UI scaling enabled.</i></p>
+
+<h2 id="details">Portrait details</h2>
+
+<p>For each included portrait, the character sheet version (layout <code>L</code>) is shown below together with:
+<ul>
+  <li>the original image source <i>(title, link, and author &ndash; as far as I could find out)</i></li>
+  <li>a summary of the post-processing steps I took to turn it into an IWD:EE style portrait.</p>
+</ul>
+
+<p>The built-in IWD:EE portraits are also shown for comparison, even though they aren't included in this portrait pack.</p>
+
+
+
+<h3>Male portraits</h3>
+
+
+<h4>Monk</h4>
+
+<div class="portrait">
+<div class="name">!m00</div>
+
+<img src="L/x!!m00L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://l5r.wikia.com/wiki/Daigotsu_Rafu">Daigotsu Rafu</a>"<br>
+  L5R card art
+  </div>
+  <div class="changes">extended + colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!m02</div>
+
+<img src="L/x!!m02L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://leifheanzo.deviantart.com/art/Sen-Pei-475546929">Sen-Pei</a>"<br>by Leifheanzo
+  </div>
+  <div class="changes">cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!m04</div>
+
+<img src="L/x!!m04L.bmp">
+<div class="details">
+  <div class="source">
+  <a href="https://www.artstation.com/artwork/xzPeyr">Manneo</a> by Aleksey Iromonik Konyshev
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!mb0</div>
+
+<img src="L/x!!mb0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://press.baldursgateii.com/images/rasaad_art.png">Rasaad yn Bashir</a>"<br>
+  BG2:EE promo art
+  </div>
+  <div class="changes">outline removed + flipped + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!mb2</div>
+
+<img src="L/x!!mb2L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://www.artstation.com/artwork/ZGr41">Dragon Bell Monk</a>"<br>
+  MtG card art<br>by Lius Lasahido
+  </div>
+  <div class="changes">bell and pillar removed + colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!mb4</div>
+
+<img src="L/x!!mb4L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://www.artofmtg.com/art/lose-calm/">Lose Calm</a>"<br>
+  MtG card art<br>by Jason Engle
+  </div>
+  <div class="changes">extended + colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!mb6</div>
+
+<img src="L/x!!mb6L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://joofoot.artstation.com/projects/0b8b4?album_id=679197">Redguard Monk</a>"<br>by Julian Futanto
+  </div>
+  <div class="changes">cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!mb8</div>
+
+<img src="L/x!!mb8L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://www.pinterest.com/pin/541417186423372673/">Monk</a>"<br>by limsh
+  </div>
+  <div class="changes">colors adjusted + background replaced [<a href="http://i.imgur.com/0RsXDau.jpg">built-in "HFT" portrait</a>] + cropped</div>
+</div>
+</div>
+
+
+<h4>Cleric</h4>
+
+<div class="portrait orig">
+<div class="name">2MHUM1</div>
+
+<img src="https://i.imgur.com/oJCHMQ8.jpg">
+<div class="details">
+  <div class="source">
+  official IWD:EE portrait
+  </div>
+  <small>[not included]</small></div>
+</div>
+<div class="portrait orig">
+<div class="name">HMC</div>
+
+<img src="https://i.imgur.com/DkCDVh6.jpg">
+<div class="details">
+  <div class="source">
+  official IWD:EE portrait
+  </div>
+  <small>[not included]</small></div>
+</div>
+<div class="portrait orig">
+<div class="name">HMC3</div>
+
+<img src="https://i.imgur.com/4RiyHc7.jpg">
+<div class="details">
+  <div class="source">
+  official IWD:EE portrait
+  </div>
+  <small>[not included]</small></div>
+</div>
+<div class="portrait orig">
+<div class="name">HMC4</div>
+
+<img src="https://i.imgur.com/Iku9m8S.jpg">
+<div class="details">
+  <div class="source">
+  official IWD:EE portrait
+  </div>
+  <small>[not included]</small></div>
+</div>
+<div class="portrait">
+<div class="name">!cb0</div>
+
+<img src="L/x!!cb0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://blog.sina.com.cn/s/blog_5058698f0101dgzj.html">Tang Xuanzang</a>"<br>by guicaimumu
+  </div>
+  <div class="changes">horse removed + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!cb2</div>
+
+<img src="L/x!!cb2L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://static.wikia.nocookie.net/pathfinderkingmaker_gamepedia_en/images/6/6d/Tristian.png">Tristian</a>"<br>
+  Pathfinder: Kingmaker portrait
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!cb4</div>
+
+<img src="L/x!!cb4L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://www.artstation.com/artwork/1V34Z">Bishop Elijah</a>"<br>by Ekaterina Burmak
+  </div>
+  <div class="changes">extended + colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!cs0</div>
+
+<img src="L/x!!cs0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://asahisuperdry.deviantart.com/art/Inquisitor-investigator-593626444">Inquisitor/investigator</a>"<br>by Asahisuperdry
+  </div>
+  <div class="changes">cross removed + colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait orig">
+<div class="name">EMC</div>
+
+<img src="https://i.imgur.com/TxzHZMH.jpg">
+<div class="details">
+  <div class="source">
+  official IWD:EE portrait
+  </div>
+  <small>[not included]</small></div>
+</div>
+<div class="portrait">
+<div class="name">!cr0</div>
+
+<img src="L/x!!cr0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://chrisrahnart.blogspot.com/2012/02/mikaeus-unhallowed.html">Mikaeus, the Unhallowed</a>"<br>by Christ Rahn
+  </div>
+  <div class="changes">upscaled + colors adjusted + background rearranged + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!cr2</div>
+
+<img src="L/x!!cr2L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://florianrenner.deviantart.com/art/Witcher-64788217">Witcher</a>"<br>by florianrenner
+  </div>
+  <div class="changes">colors adjusted + cropped + flipped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!cr4</div>
+
+<img src="L/x!!cr4L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://www.artstation.com/artwork/6a5R8w">Alistair</a>"<br>by Anton Fort
+  </div>
+  <div class="changes">cropped</div>
+</div>
+</div>
+<div class="portrait orig">
+<div class="name">HMC2</div>
+
+<img src="https://i.imgur.com/7QTPIju.jpg">
+<div class="details">
+  <div class="source">
+  official IWD:EE portrait
+  </div>
+  <small>[not included]</small></div>
+</div>
+<div class="portrait">
+<div class="name">!cv0</div>
+
+<img src="L/x!!cv0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://tentaclesandteeth.deviantart.com/art/Dwarf-Cleric-440926016">Dwarf Cleric</a>"<br>by TentaclesandTeeth
+  </div>
+  <div class="changes">stretched + colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!cx0</div>
+
+<img src="L/x!!cx0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://yefumm.deviantart.com/art/Cleric-273219661">Cleric</a>"<br>by yefumm
+  </div>
+  <div class="changes">colors adjusted + cropped + flipped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!cy0</div>
+
+<img src="L/x!!cy0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://www.pinterest.com/pin/47358233564519655/">Pathfinder: Kingmaker art</a>"<br>by Valeriy Vegera
+  </div>
+  <div class="changes">cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!cz0</div>
+
+<img src="L/x!!cz0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://www.artstation.com/artwork/QlDnl">Redemeer</a>"<br>by Pascal Quidault
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!cz2</div>
+
+<img src="L/x!!cz2L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://asahisuperdry.deviantart.com/art/Dead-eye-enforcer-hex-entertainment-608386225">Dead eye enforcer ( hex entertainment )</a>"<br>by Asahisuperdry
+  </div>
+  <div class="changes">cropped</div>
+</div>
+</div>
+
+
+<h4>Druid</h4>
+
+<div class="portrait">
+<div class="name">!d00</div>
+
+<img src="L/x!!d00L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://edli.deviantart.com/art/Druid-180855410">Druid</a>"<br>by Edli
+  </div>
+  <div class="changes">upscaled + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!d02</div>
+
+<img src="L/x!!d02L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://artemiskolakis.cgsociety.org/art/photoshop-ghillie-dhu-2d-598590">Ghillie Dhu</a>"<br>by Artemis Kolakis
+  </div>
+  <div class="changes">colors adjusted + sharpened + cropped + flipped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!d04</div>
+
+<img src="L/x!!d04L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://peterprime.deviantart.com/art/Druid-concept-370026553">Druid concept</a>"<br>by PeterPrime
+  </div>
+  <div class="changes">cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!da0</div>
+
+<img src="L/x!!da0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://www.artstation.com/artwork/8rK2n">Takkar the Apex Predator</a>"<br>by &quot;Naomi Savoie&quot;
+  </div>
+  <div class="changes">cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!da2</div>
+
+<img src="L/x!!da2L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://takeda11.deviantart.com/art/Druid-632001690">Druid</a>"<br>by Takeda11
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!db0</div>
+
+<img src="L/x!!db0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://www.winonanelsonart.com/magic-the-gathering.html">Elvish Mystic</a>"<br>by Winona Nelson
+  </div>
+  <div class="changes">smoothed + colors adjusted + sharpened + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!db2</div>
+
+<img src="L/x!!db2L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://igorkieryluk.deviantart.com/art/Druid-181408420">Druid</a>"<br>by IgorKieryluk
+  </div>
+  <div class="changes">smoothed + extended + colors adjusted + sharpened + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!df0</div>
+
+<img src="L/x!!df0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://1oshuart.deviantart.com/art/destruction-s-avatar-normal-version-405554647">destruction s avatar normal version</a>"<br>by 1oshuart
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!di0</div>
+
+<img src="L/x!!di0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://tgconceptart.deviantart.com/art/Ice-Druid-63050794">Ice Druid</a>"<br>by tgconceptart
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!di2</div>
+
+<img src="L/x!!di2L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://neo2055.deviantart.com/art/ice-druid-58319422">ice druid</a>"<br>by neo2055
+  </div>
+  <div class="changes">cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!dl0</div>
+
+<img src="L/x!!dl0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://dleoblack.deviantart.com/art/Druid-360906574">Druid</a>"<br>by dleoblack
+  </div>
+  <div class="changes">gem removed + colors adjusted + upscaled + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!dp0</div>
+
+<img src="L/x!!dp0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://spellweaver-tcg.com/press/spellweaver/images/Card%20-%20Summoner%20Druid.jpg">Summoner Druid</a>"<br>
+  Spellweaver card art<br>by Joshua Cairós
+  </div>
+  <div class="changes">upscaled + smoothed + colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!ds0</div>
+
+<img src="L/x!!ds0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://kuzinskiy.deviantart.com/art/werewolf-Vinfor-440286081">werewolf Vinfor</a>"<br>by Kuzinskiy
+  </div>
+  <div class="changes">cropped</div>
+</div>
+</div>
+<div class="portrait orig_variant">
+<div class="name">2MBAR1b</div>
+
+<img src="https://i.imgur.com/C8z69SU.jpg">
+<div class="details">
+  <div class="source">
+  variation of official IWD:EE portrait
+  </div>
+  
+  <small>[not included &ndash; get it from my <b><a href="https://forums.beamdog.com/discussion/45897/mod-iwd-ee-portrait-variations/p1">IWD:EE Portrait Variations</a></b> mod]</small></div>
+</div>
+<div class="portrait">
+<div class="name">!dw0</div>
+
+<img src="L/x!!dw0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://elistraie.deviantart.com/art/Forest-Warrior-596807453">Forest Warrior</a>"<br>by Elistraie
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!dw2</div>
+
+<img src="L/x!!dw2L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://zix72.deviantart.com/art/jungler-432139958">jungler</a>"<br>by zix72
+  </div>
+  <div class="changes">colors adjusted + rotated + cropped</div>
+</div>
+</div>
+
+
+<h4>Shaman</h4>
+
+<div class="portrait">
+<div class="name">!s00</div>
+
+<img src="L/x!!s00L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://www.vancekovacs.com/galleries/publishing-i/publishing-ii/">Jund Battlemage</a>"<br>
+  MTG card art<br>by Vance Kovacs
+  </div>
+  <div class="changes">colors adjusted + cropped + flipped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">!s02</div>
+
+<img src="L/x!!s02L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://joelchaimholtzman.deviantart.com/art/Khazar-Od-Iyesi-786460887">Khazar Od Iyesi</a>"<br>by JoelChaimHoltzman
+  </div>
+  <div class="changes">cropped</div>
+</div>
+</div>
+
+<h3>Female portraits</h3>
+
+
+<h4>Monk</h4>
+
+<div class="portrait">
+<div class="name">#m00</div>
+
+<img src="L/x!%23m00L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://www.artofmtg.com/art/wandering-champion/">Wandering Champion</a>"<br>
+  MtG card art<br>by Willian Murai
+  </div>
+  <div class="changes">extended + foreground rearranged + colors adjusted + sharpened + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">#m02</div>
+
+<img src="L/x!%23m02L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://nikolayasparuhov.deviantart.com/art/Fe-402296476">Fe</a>"<br>by NikolayAsparuhov
+  </div>
+  <div class="changes">cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">#mb0</div>
+
+<img src="L/x!%23mb0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://www.artofmtg.com/art/jeskai-clan-art-01/">Jeskai Clan</a>"<br>
+  MtG card art
+  </div>
+  <div class="changes">colors adjusted + background replaced [<a href="http://i.imgur.com/0RsXDau.jpg">built-in "HFT" portrait</a>] + cropped</div>
+</div>
+</div>
+
+
+<h4>Cleric</h4>
+
+<div class="portrait orig">
+<div class="name">EFC</div>
+
+<img src="https://i.imgur.com/kO9W66o.jpg">
+<div class="details">
+  <div class="source">
+  official IWD:EE portrait
+  </div>
+  <small>[not included]</small></div>
+</div>
+<div class="portrait">
+<div class="name">#ch0</div>
+
+<img src="L/x!%23ch0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://pindurski.deviantart.com/art/Elf-Priestess-570226319">Elf Priestess</a>"<br>by pindurski
+  </div>
+  <div class="changes">cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">#ck0</div>
+
+<img src="L/x!%23ck0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://dallas-williams.deviantart.com/art/Oracle-of-Thassa-397770445">Oracle of Thassa</a>"<br>by Dallas-Williams
+  </div>
+  <div class="changes">extended + colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">#cp0</div>
+
+<img src="L/x!%23cp0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://thomasdenmarkportfolio.blogspot.com/2014/09/misten-witch.html">Misten Witch</a>"<br>by Thomas Denmark
+  </div>
+  <div class="changes">cropped</div>
+</div>
+</div>
+<div class="portrait orig">
+<div class="name">HEFC</div>
+
+<img src="https://i.imgur.com/iNvbt9v.jpg">
+<div class="details">
+  <div class="source">
+  official IWD:EE portrait
+  </div>
+  <small>[not included]</small></div>
+</div>
+<div class="portrait orig_variant">
+<div class="name">HEFCc</div>
+
+<img src="https://i.imgur.com/6HuZoj1.jpg">
+<div class="details">
+  <div class="source">
+  variation of official IWD:EE portrait
+  </div>
+  
+  <small>[not included &ndash; get it from my <b><a href="https://forums.beamdog.com/discussion/45897/mod-iwd-ee-portrait-variations/p1">IWD:EE Portrait Variations</a></b> mod]</small></div>
+</div>
+<div class="portrait orig_variant">
+<div class="name">HFFb</div>
+
+<img src="https://i.imgur.com/1o021II.jpg">
+<div class="details">
+  <div class="source">
+  variation of official IWD:EE portrait
+  </div>
+  
+  <small>[not included &ndash; get it from my <b><a href="https://forums.beamdog.com/discussion/45897/mod-iwd-ee-portrait-variations/p1">IWD:EE Portrait Variations</a></b> mod]</small></div>
+</div>
+<div class="portrait">
+<div class="name">#cv0</div>
+
+<img src="L/x!%23cv0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://darianaloki.deviantart.com/art/Clerik-377448592">Clerik</a>"<br>by DarianaLoki
+  </div>
+  <div class="changes">background characters removed + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">#cv2</div>
+
+<img src="L/x!%23cv2L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://www.artstation.com/artwork/xYKmO">Warrior girl</a>"<br>by Andrey Vasilchenko
+  </div>
+  <div class="changes">sharpened + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">#cv4</div>
+
+<img src="L/x!%23cv4L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://greyhues.deviantart.com/art/Paladin-543899212">Paladin</a>"<br>by GreyHues
+  </div>
+  <div class="changes">rotated + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">#cy0</div>
+
+<img src="L/x!%23cy0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://spellsword95.deviantart.com/art/Lightbringer-439941281">Lightbringer</a>"<br>by spellsword95
+  </div>
+  <div class="changes">colors adjusted + clouds added + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">#cy2</div>
+
+<img src="L/x!%23cy2L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://www.artstation.com/artwork/dkoZw">Basira- Wisdom</a>"<br>by Othon Nikolaidis
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">#cz0</div>
+
+<img src="L/x!%23cz0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://lucasgraciano.blogspot.com/2012/04/more-from-avacyn-restored-set.html">Minister of Offerings</a>"<br>
+  MtG card art<br>by Lucas Graciano
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+
+
+<h4>Druid</h4>
+
+<div class="portrait orig_variant">
+<div class="name">HFW3b</div>
+
+<img src="https://i.imgur.com/4OB9Ux1.jpg">
+<div class="details">
+  <div class="source">
+  variation of official IWD:EE portrait
+  </div>
+  
+  <small>[not included &ndash; get it from my <b><a href="https://forums.beamdog.com/discussion/45897/mod-iwd-ee-portrait-variations/p1">IWD:EE Portrait Variations</a></b> mod]</small></div>
+</div>
+<div class="portrait orig">
+<div class="name">HFD</div>
+
+<img src="https://i.imgur.com/8hexIkE.jpg">
+<div class="details">
+  <div class="source">
+  official IWD:EE portrait
+  </div>
+  <small>[not included]</small></div>
+</div>
+<div class="portrait">
+<div class="name">#da0</div>
+
+<img src="L/x!%23da0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://pinterest.com/pin/336784878365235001/">Druid</a>"<br>by Bakirasan
+  </div>
+  <div class="changes">colors adjusted + sharpened + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">#db0</div>
+
+<img src="L/x!%23db0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://llyncis.deviantart.com/art/jungle-princess-528873691">jungle princess</a>"<br>by Llyncis
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">#dd0</div>
+
+<img src="L/x!%23dd0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://pathfinderkingmaker.fandom.com/wiki/File:PlayerDruid01.png">Druid</a>"<br>
+  Pathfinder: Kingmaker player portrait
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">#df0</div>
+
+<img src="L/x!%23df0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://artofrussell.deviantart.com/art/boudica-Ewyn-491527700">boudica Ewyn</a>"<br>by artofrussell
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">#dk0</div>
+
+<img src="L/x!%23dk0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://anotherwanderer.deviantart.com/art/Shaman-141455926">Shaman</a>"<br>by anotherwanderer
+  </div>
+  <div class="changes">upscaled + colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">#dk2</div>
+
+<img src="L/x!%23dk2L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://clintcearley.deviantart.com/art/Druid-258851748">Druid</a>"<br>by ClintCearley
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">#dk3</div>
+
+<img src="L/x!%23dk3L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://clintcearley.deviantart.com/art/Druid-258851748">Druid</a>"<br>by ClintCearley
+  </div>
+  <div class="changes">colors adjusted + photoshopped [&rarr; without Elf ear] + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">#dm0</div>
+
+<img src="L/x!%23dm0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://artoftas.deviantart.com/art/Fox-Shaman-340893532">Fox Shaman</a>"<br>by artoftas
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">#dm2</div>
+
+<img src="L/x!%23dm2L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://wesleyburt.artstation.com/projects/lGbaO">Nissa, Sage Animist</a>"<br>by Wesley Burt
+  </div>
+  <div class="changes">skin smoothed + colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">#dm4</div>
+
+<img src="L/x!%23dm4L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://alayna.deviantart.com/art/Earth-Light-245305209">Earth Light</a>"<br>by Alayna
+  </div>
+  <div class="changes">cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">#dp0</div>
+
+<img src="L/x!%23dp0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://jasonchanart.blogspot.com/2013/11/magic-gathering-2013-artwork.html">Vitu-Ghazi Guildmage</a>"<br>by Jason Chan
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">#ds0</div>
+
+<img src="L/x!%23ds0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://i.pinimg.com/originals/5c/76/f3/5c76f32c7a303ddb644e863642c2619f.jpg">Embraced by the Moon</a>"<br>
+  MtG card art
+  </div>
+  <div class="changes">cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">#dv0</div>
+
+<img src="L/x!%23dv0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://nightlong86.deviantart.com/art/Jaheira-Fan-Art-Baldurs-Gate-175903659">Jaheira Fan Art - Baldurs Gate</a>"<br>by Nightlong86
+  </div>
+  <div class="changes">sharpened + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">#dv2</div>
+
+<img src="L/x!%23dv2L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://unlee.artstation.com/projects/6L0Pr">Elven shock troopers</a>"<br>by Un Lee
+  </div>
+  <div class="changes">upscaled + background objects removed + colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">#dv4</div>
+
+<img src="L/x!%23dv4L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://www.aaronbmiller.com/tokens/warrior-token-signed-337xf">Warrior Token</a>"<br>by Aaron Miller
+  </div>
+  <div class="changes">extended + colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">#dw0</div>
+
+<img src="L/x!%23dw0L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://benwootten.deviantart.com/art/Cyndra-294215504">Cyndra</a>"<br>by BenWootten
+  </div>
+  <div class="changes">cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">#dw2</div>
+
+<img src="L/x!%23dw2L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="http://marktarrisse.deviantart.com/art/Amazon-197769396">Amazon </a>"<br>by MarkTarrisse
+  </div>
+  <div class="changes">cropped</div>
+</div>
+</div>
+
+
+<h4>Shaman</h4>
+
+<div class="portrait">
+<div class="name">#s00</div>
+
+<img src="L/x!%23s00L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://www.artstation.com/artwork/o0JLL">Shaman</a>"<br>by Jean-Loïc Fontaine
+  </div>
+  <div class="changes">colors adjusted + cropped</div>
+</div>
+</div>
+<div class="portrait">
+<div class="name">#s04</div>
+
+<img src="L/x!%23s04L.bmp">
+<div class="details">
+  <div class="source">
+  "<a href="https://www.leannacrossanart.com/card-art#/shaman/">Shaman</a>"<br>by Leanna Crossan
+  </div>
+  <div class="changes">cropped</div>
+</div>
+</div>
+
+</body>
+</html>
