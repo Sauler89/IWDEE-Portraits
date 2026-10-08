@@ -6,7 +6,7 @@ The mod installs everything through **one WeiDU component**.
 
 ## Included portraits
 
-- Main Collection: **250** selected portraits
+- Main Ineth Collection: **250** selected portraits
 - Icewind Dale II: **23** selected portraits
 - Garion's Portrait Pack: **89** selected portraits
 - Photoshopped Variations: **10** selected portraits
